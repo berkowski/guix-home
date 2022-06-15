@@ -20,39 +20,40 @@
   (map (compose list specification->package+output)
        (list "taskwarrior"
              "emacs"
-             "emacs-all-the-icons"
-             "emacs-dockerfile-mode"
-             "emacs-doom-modeline"
-             "emacs-evil"
-             "emacs-evil-collection"
-             "emacs-flycheck"
-             "emacs-helpful"
-             "emacs-lsp-mode"
-             "emacs-lsp-ui"
-             "emacs-magit"
-             "emacs-mu4e-alert"
-             "emacs-projectile"
-             "emacs-no-littering"
-             "emacs-rustic"
-             "emacs-use-package"
-             "emacs-which-key"
-             "emacs-selectrum"
-             "emacs-undo-fu"
-             "emacs-org"
-             "emacs-org-superstar"
-             "emacs-yasnippet"
-             "emacs-company"
-             "emacs-toml-mode"
-             "font-fira-code"
-             "font-abattis-cantarell"
+             ;; "emacs-all-the-icons"
+             ;; "emacs-dockerfile-mode"
+             ;; "emacs-doom-modeline"
+             ;; "emacs-evil"
+             ;; "emacs-evil-collection"
+             ;; "emacs-flycheck"
+             ;; "emacs-helpful"
+             ;; "emacs-lsp-mode"
+             ;; "emacs-lsp-ui"
+             ;; "emacs-magit"
+             ;; "emacs-mu4e-alert"
+             ;; "emacs-projectile"
+             ;; "emacs-no-littering"
+             ;; "emacs-rustic"
+             ;; "emacs-use-package"
+             ;; "emacs-which-key"
+             ;; "emacs-selectrum"
+             ;; "emacs-undo-fu"
+             ;; "emacs-org"
+             ;; "emacs-org-superstar"
+             ;; "emacs-yasnippet"
+             ;; "emacs-company"
+             ;; "emacs-toml-mode"
+             ;; "font-fira-code"
+             ;; "font-abattis-cantarell"
              "git"
              "glibc-locales"
 	     "mandoc"
              "nss-certs"
              "picocom"
-             "rust-analyzer"
+             ;; "rust-analyzer"
              "ripgrep"
 					;"timewarrior"
+             "texinfo"
              "tmux")))
  (services
   (list
@@ -60,6 +61,8 @@
 	    (home-bash-configuration
 	     (bash-profile
 	      (list (local-file "./.bash_profile" "bash_profile")))))
+   (service home-xdg-configuration-files-service-type
+	    (list `("emacs/init.el" ,(local-file "emacs-init.el"))))
    (service home-shepherd-service-type
 	    (home-shepherd-configuration
 	     (services (list
@@ -75,3 +78,4 @@
 				    (string-append #$emacs "/bin/emacsclient")
 				    "--eval"
 				    "\"(kill-emacs)\""))))))))))))
+
