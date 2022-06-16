@@ -90,6 +90,16 @@
 ;; Initialize evil-collection
 (evil-collection-init)
 
+;;; Org mode
+
+;; guix dependencies:
+;; - emacs-org
+;; - emacs-org-appear
+(require 'org)
+;; org-appear toggle visibility of hidden elements such as emphasis markers or links
+(require 'org-appear)
+(add-hook 'org-mode-hook 'org-appear-mode)
+
 ;;; Version Control
 
 ;; magit
