@@ -10,15 +10,20 @@
 ;; Revert buffers when the underlying file has changed
 (global-auto-revert-mode 1)
 
-;; Spaces instead of tabs
-(setq-default indent-tabs-mode nil)
+;; Spaces instead of tabs (setq-default indent-tabs-mode nil)
 
 ;; Make scrolling smoother
-(setq auto-window-vscroll nil)                             ; Don't automatically ajust to view tall lines
+(setq auto-window-vscroll nil)                             ; Don't automatically ajust to view tall lines 
 (customize-set-variable 'fast-but-imprecise-scrolling t)   ; Sacrifice accuracy in scrolling for speed
 (customize-set-variable 'scroll-conservatively 101)        ; Never recenter at point (value > 100), just bring point into view
 (customize-set-variable 'scroll-margin 0)                  ; Don't auto-scroll when point gets near margin
 (customize-set-variable 'scroll-preserve-screen-position t); Keep the point position constant when scrolling
+
+;; Don't polute directories with emacs-generated files
+;; backup files go into a single directory
+(customize-set-variable 'backup-directory-alist
+                        `(("." . ,(concat (or (getenv "XDG_DATA_HOME") "~/.local/share")
+                                          "/emacs/backup"))))
 
 ;; Better support buffers with long lines
 (setq-default bidi-paragraph-direction 'left-to-right)     ; We don't really use right-to-left or bidirectional text
@@ -84,6 +89,14 @@
 
 ;; Initialize evil-collection
 (evil-collection-init)
+
+;;; Version Control
+
+;; magit
+;; guix dependencies
+;; - emacs-magit
+(require 'magit)
+(global-set-key (kbd "C-c g") 'magit-file-dispatch)  ; the recommended keybinding
 
 ;;; Software development
 

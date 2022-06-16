@@ -29,7 +29,7 @@
              "emacs-helpful"
              ;; "emacs-lsp-mode"
              ;; "emacs-lsp-ui"
-             ;; "emacs-magit"
+             "emacs-magit"
              ;; "emacs-mu4e-alert"
              ;; "emacs-projectile"
              ;; "emacs-no-littering"
