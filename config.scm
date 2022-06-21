@@ -56,6 +56,14 @@
 	      (list (local-file "./.bash_profile" "bash_profile")))))
    (service home-xdg-configuration-files-service-type
 	    (list `("emacs/init.el" ,(local-file "emacs-init.el"))))
+   (simple-service 'guix-personal-channel
+		   home-xdg-configuration-files-service-type
+		   (list `("guix/channels.scm"
+			   ,(plain-file "channels.scm"
+					"(cons (channel
+(name 'guix-personal)
+(url \"https://gitlab.com/berkowski/guix-local\"))
+%default-channels)"))))
    (service home-shepherd-service-type
 	    (home-shepherd-configuration
 	     (services (list
