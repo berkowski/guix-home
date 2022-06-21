@@ -69,6 +69,7 @@
 (customize-set-variable 'evil-want-keybinding nil)
 (customize-set-variable 'evil-want-C-i-jump nil)
 (customize-set-variable 'evil-respect-visual-line-mode t)
+(customize-set-variable 'evil-undo-system 'undo-redo)    ; use default emacs undo-redo system
 
 ;; Load evil and enable globally
 (require 'evil)
@@ -184,8 +185,25 @@
 
 ;;; Software development
 
+;; Language Server
+;;
+;; guix dependencies
+;; - emacs-eglot
+(require 'eglot)
+
+
 ;; Rust
 ;;
 ;; guix dependencies:
 ;; - emacs-rust-mode
+;; - emacs-rustic
+;; - rust-analyzier
 (require 'rust-mode)
+(require 'rustic)
+(customize-set-variable 'rustic-lsp-client 'eglot) ; use eglot for the language server
+(add-hook 'eglot--managed-mode-hook (lambda () (flymake-mode -1))) ; from emacs-rustic README
+
+(customize-set-variable 'rustic-cargo-bin "~/.cargo/bin/cargo")
+(customize-set-variable 'rustic-rustfmt-bin "~/.cargo/bin/rustfmt")
+
+
