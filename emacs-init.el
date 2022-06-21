@@ -7,10 +7,8 @@
 
 ;;; Some global defaults
 
-;; Revert buffers when the underlying file has changed
-(global-auto-revert-mode 1)
-
-;; Spaces instead of tabs (setq-default indent-tabs-mode nil)
+(global-auto-revert-mode 1)                                ; Revert buffers when the underlying file has changed
+(setq-default indent-tabs-mode nil)                        ; Spaces instead of tabs
 
 ;; Make scrolling smoother
 (setq auto-window-vscroll nil)                             ; Don't automatically ajust to view tall lines 

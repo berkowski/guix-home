@@ -55,7 +55,8 @@
 	     (bash-profile
 	      (list (local-file "./.bash_profile" "bash_profile")))))
    (service home-xdg-configuration-files-service-type
-	    (list `("emacs/init.el" ,(local-file "emacs-init.el"))))
+	    `(("emacs/init.el" ,(local-file "emacs-init.el"))
+              ("emacs/early-init.el" ,(local-file "emacs-early-init.el"))))
    (simple-service 'guix-personal-channel
 		   home-xdg-configuration-files-service-type
 		   (list `("guix/channels.scm"
