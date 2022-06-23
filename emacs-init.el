@@ -34,6 +34,11 @@
     (previous-buffer)
     (kill-buffer buffer-to-kill)))
 
+;; Theme settings
+;; guix requirements:
+;; - emacs-base16-theme
+(load-theme 'base16-nord t)
+
 ;;; Help buffer improvements
 
 ;; Make `describe-*' screens more helpful

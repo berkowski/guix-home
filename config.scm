@@ -21,6 +21,7 @@
        (list "taskwarrior"
              "emacs"
              ;; "emacs-all-the-icons"
+             "emacs-base16-theme"
              "emacs-consult"
              "emacs-corfu"
              "emacs-corfu-doc"
