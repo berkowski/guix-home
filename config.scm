@@ -68,17 +68,18 @@
 %default-channels)"))))
    (service home-shepherd-service-type
 	    (home-shepherd-configuration
-	     (services (list
-			(shepherd-service
-			 (provision '(emacs))
-			 (start #~(make-forkexec-constructor
-				   (list
-				    #$(file-append emacs "/bin/emacs")
-				    "--fg-daemon")))
-			 (stop #~(make-system-destructor
-				  (string-join 
-				   (list
-				    (string-append #$emacs "/bin/emacsclient")
-				    "--eval"
-				    "\"(kill-emacs)\""))))))))))))
+	     (services
+              (list
+	       (shepherd-service
+		(provision '(emacs))
+		(start #~(make-forkexec-constructor
+			  (list
+			   #$(file-append emacs "/bin/emacs")
+			   "--fg-daemon")))
+		(stop #~(make-system-destructor
+			 (string-join 
+			  (list
+			   (string-append #$emacs "/bin/emacsclient")
+			   "--eval"
+			   "\"(kill-emacs)\""))))))))))))
 
